@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 08, 2021 at 01:02 AM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 7.2.3
+-- Waktu pembuatan: 11 Jun 2022 pada 07.41
+-- Versi server: 10.4.24-MariaDB
+-- Versi PHP: 7.4.29
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -25,7 +24,7 @@ SET time_zone = "+00:00";
 -- --------------------------------------------------------
 
 --
--- Table structure for table `balita`
+-- Struktur dari tabel `balita`
 --
 
 CREATE TABLE `balita` (
@@ -38,7 +37,7 @@ CREATE TABLE `balita` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `balita`
+-- Dumping data untuk tabel `balita`
 --
 
 INSERT INTO `balita` (`kode_balita`, `nik`, `nama_balita`, `tempat_lahir`, `tgl_lahir`, `jenkel`) VALUES
@@ -57,7 +56,7 @@ INSERT INTO `balita` (`kode_balita`, `nik`, `nama_balita`, `tempat_lahir`, `tgl_
 -- --------------------------------------------------------
 
 --
--- Table structure for table `history`
+-- Struktur dari tabel `history`
 --
 
 CREATE TABLE `history` (
@@ -72,7 +71,7 @@ CREATE TABLE `history` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `history`
+-- Dumping data untuk tabel `history`
 --
 
 INSERT INTO `history` (`kode_balita`, `nik`, `tipe`, `bb_balita`, `tb_balita`, `tgl_periksa`, `jenis_vaksin`, `tgl_imunisasi`) VALUES
@@ -117,7 +116,7 @@ INSERT INTO `history` (`kode_balita`, `nik`, `tipe`, `bb_balita`, `tb_balita`, `
 -- --------------------------------------------------------
 
 --
--- Table structure for table `history_imun`
+-- Struktur dari tabel `history_imun`
 --
 
 CREATE TABLE `history_imun` (
@@ -128,7 +127,7 @@ CREATE TABLE `history_imun` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `history_imun`
+-- Dumping data untuk tabel `history_imun`
 --
 
 INSERT INTO `history_imun` (`kode_balita`, `nik`, `jenis_vaksin`, `tgl_imunisasi`) VALUES
@@ -149,7 +148,31 @@ INSERT INTO `history_imun` (`kode_balita`, `nik`, `jenis_vaksin`, `tgl_imunisasi
 -- --------------------------------------------------------
 
 --
--- Table structure for table `imunisasi`
+-- Struktur dari tabel `ibu_hamil`
+--
+
+CREATE TABLE `ibu_hamil` (
+  `nik` char(16) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `suami` varchar(255) NOT NULL,
+  `alamat` text NOT NULL,
+  `tgl_lahir` date DEFAULT NULL,
+  `created` date NOT NULL DEFAULT current_timestamp(),
+  `updated` date NOT NULL DEFAULT current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `ibu_hamil`
+--
+
+INSERT INTO `ibu_hamil` (`nik`, `nama`, `suami`, `alamat`, `tgl_lahir`, `created`, `updated`) VALUES
+('112423435534', 'Raahmy', 'Doni', 'Desa Sidua-dua Kecamatan Kualuh Selatan', '2000-02-25', '2022-06-11', '2022-06-11'),
+('14078545645', 'Nurni', 'Dedi', 'Jakarta', '2003-07-13', '2022-06-11', '2022-06-11');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `imunisasi`
 --
 
 CREATE TABLE `imunisasi` (
@@ -160,7 +183,7 @@ CREATE TABLE `imunisasi` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `imunisasi`
+-- Dumping data untuk tabel `imunisasi`
 --
 
 INSERT INTO `imunisasi` (`kode_balita`, `nik`, `jenis_vaksin`, `tgl_imunisasi`) VALUES
@@ -179,7 +202,7 @@ INSERT INTO `imunisasi` (`kode_balita`, `nik`, `jenis_vaksin`, `tgl_imunisasi`) 
 -- --------------------------------------------------------
 
 --
--- Table structure for table `jadwal`
+-- Struktur dari tabel `jadwal`
 --
 
 CREATE TABLE `jadwal` (
@@ -189,7 +212,7 @@ CREATE TABLE `jadwal` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `jadwal`
+-- Dumping data untuk tabel `jadwal`
 --
 
 INSERT INTO `jadwal` (`kode_jadwal`, `tanggal`, `jam`) VALUES
@@ -198,7 +221,29 @@ INSERT INTO `jadwal` (`kode_jadwal`, `tanggal`, `jam`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `perkembangan_balita`
+-- Struktur dari tabel `lansia`
+--
+
+CREATE TABLE `lansia` (
+  `nik` char(16) NOT NULL,
+  `nama` varchar(255) NOT NULL,
+  `alamat` text NOT NULL,
+  `tanggal` date NOT NULL,
+  `created` date NOT NULL,
+  `updated` date NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `lansia`
+--
+
+INSERT INTO `lansia` (`nik`, `nama`, `alamat`, `tanggal`, `created`, `updated`) VALUES
+('12345678', 'DONI MULYA SYAHPUTRA', 'Medan City', '1994-02-15', '2022-06-11', '2022-06-11');
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `perkembangan_balita`
 --
 
 CREATE TABLE `perkembangan_balita` (
@@ -210,7 +255,7 @@ CREATE TABLE `perkembangan_balita` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `perkembangan_balita`
+-- Dumping data untuk tabel `perkembangan_balita`
 --
 
 INSERT INTO `perkembangan_balita` (`kode_balita`, `nik`, `bb_balita`, `tb_balita`, `tgl_periksa`) VALUES
@@ -229,7 +274,7 @@ INSERT INTO `perkembangan_balita` (`kode_balita`, `nik`, `bb_balita`, `tb_balita
 -- --------------------------------------------------------
 
 --
--- Table structure for table `phbs`
+-- Struktur dari tabel `phbs`
 --
 
 CREATE TABLE `phbs` (
@@ -246,7 +291,7 @@ CREATE TABLE `phbs` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `phbs`
+-- Dumping data untuk tabel `phbs`
 --
 
 INSERT INTO `phbs` (`kode_phbs`, `judul_berita`, `jenis_berita`, `tempat_dibuat`, `tgl_dibuat`, `deskripsi_berita`, `penulis_berita`, `editor_berita`, `penerbit`, `gambar`) VALUES
@@ -255,7 +300,7 @@ INSERT INTO `phbs` (`kode_phbs`, `judul_berita`, `jenis_berita`, `tempat_dibuat`
 -- --------------------------------------------------------
 
 --
--- Table structure for table `user`
+-- Struktur dari tabel `user`
 --
 
 CREATE TABLE `user` (
@@ -274,7 +319,7 @@ CREATE TABLE `user` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Dumping data for table `user`
+-- Dumping data untuk tabel `user`
 --
 
 INSERT INTO `user` (`nik`, `nama`, `tempat_lahir`, `tgl_lahir`, `alamat`, `no_hp`, `agama`, `pekerjaan`, `nama_suami`, `akses`, `username`, `password`) VALUES
@@ -296,64 +341,76 @@ INSERT INTO `user` (`nik`, `nama`, `tempat_lahir`, `tgl_lahir`, `alamat`, `no_hp
 --
 
 --
--- Indexes for table `balita`
+-- Indeks untuk tabel `balita`
 --
 ALTER TABLE `balita`
   ADD PRIMARY KEY (`kode_balita`),
   ADD KEY `fk_nik` (`nik`);
 
 --
--- Indexes for table `jadwal`
+-- Indeks untuk tabel `ibu_hamil`
+--
+ALTER TABLE `ibu_hamil`
+  ADD PRIMARY KEY (`nik`);
+
+--
+-- Indeks untuk tabel `jadwal`
 --
 ALTER TABLE `jadwal`
   ADD PRIMARY KEY (`kode_jadwal`);
 
 --
--- Indexes for table `perkembangan_balita`
+-- Indeks untuk tabel `lansia`
+--
+ALTER TABLE `lansia`
+  ADD PRIMARY KEY (`nik`);
+
+--
+-- Indeks untuk tabel `perkembangan_balita`
 --
 ALTER TABLE `perkembangan_balita`
   ADD KEY `fk_kode_balita` (`kode_balita`);
 
 --
--- Indexes for table `phbs`
+-- Indeks untuk tabel `phbs`
 --
 ALTER TABLE `phbs`
   ADD PRIMARY KEY (`kode_phbs`);
 
 --
--- Indexes for table `user`
+-- Indeks untuk tabel `user`
 --
 ALTER TABLE `user`
   ADD PRIMARY KEY (`nik`);
 
 --
--- AUTO_INCREMENT for dumped tables
+-- AUTO_INCREMENT untuk tabel yang dibuang
 --
 
 --
--- AUTO_INCREMENT for table `balita`
+-- AUTO_INCREMENT untuk tabel `balita`
 --
 ALTER TABLE `balita`
   MODIFY `kode_balita` int(5) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 
 --
--- AUTO_INCREMENT for table `jadwal`
+-- AUTO_INCREMENT untuk tabel `jadwal`
 --
 ALTER TABLE `jadwal`
   MODIFY `kode_jadwal` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
--- AUTO_INCREMENT for table `phbs`
+-- AUTO_INCREMENT untuk tabel `phbs`
 --
 ALTER TABLE `phbs`
   MODIFY `kode_phbs` int(3) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
--- Constraints for dumped tables
+-- Ketidakleluasaan untuk tabel pelimpahan (Dumped Tables)
 --
 
 --
--- Constraints for table `perkembangan_balita`
+-- Ketidakleluasaan untuk tabel `perkembangan_balita`
 --
 ALTER TABLE `perkembangan_balita`
   ADD CONSTRAINT `fk_kode_balita` FOREIGN KEY (`kode_balita`) REFERENCES `balita` (`kode_balita`) ON DELETE CASCADE ON UPDATE CASCADE;

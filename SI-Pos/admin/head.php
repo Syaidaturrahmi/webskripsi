@@ -96,6 +96,10 @@ require_once('../session.php');
                         <a href="ibu-hamil.php" class="waves-effect"><i class="fa fa-user fa-fw"
                                 aria-hidden="true"></i><span class="hide-menu">Ibu Hamil</span></a>
                     </li>
+                    <li>
+                        <a href="lansia.php" class="waves-effect"><i class="fa fa-user fa-fw"
+                                aria-hidden="true"></i><span class="hide-menu">Lansia</span></a>
+                    </li>
                 </ul>
                 <div class="center p-20">
                     <span class="hide-menu"><a href="logout.php" class="btn btn-danger btn-block btn-rounded waves-effect waves-light"><i class="fa fa-user fa-fw"></i> Logout</a></span>

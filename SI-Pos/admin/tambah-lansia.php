@@ -3,20 +3,19 @@ if (isset($_POST['tambah'])) {
     //ORTU
     $nik = $_POST['nik'];
     $nama = $_POST['nama'];
-    $suami = $_POST['suami'];
     $alamat = $_POST['alamat'];
     $tanggal = $_POST['tanggal'];
     $created = date("Y-m-d H:i:s");
     $updated = date("Y-m-d H:i:s");
 
-    if ($nik == null || $nama == null || $suami == null || $alamat == null || $tanggal == null) {
-        header('location:ibu-hamil.php?stat=input_null');
+    if ($nik == null || $nama == null || $alamat == null || $tanggal == null) {
+        header('location:lansia.php?stat=input_null');
     } else {
-        $addibu = mysqli_query($con, "INSERT INTO ibu_hamil VALUES('$nik','$nama','$suami','$alamat','$tanggal','$created','$updated')");
-        if ($addibu) {
-            header('location:ibu-hamil.php?stat=input_success');
+        $addlansia = mysqli_query($con, "INSERT INTO lansia VALUES('$nik','$nama','$alamat','$tanggal','$created','$updated')");
+        if ($addlansia) {
+            header('location:lansia.php?stat=input_success');
         } else {
-            header('location:ibu-hamil.php?stat=input_failed');
+            header('location:lansia.php?stat=input_failed');
         }
     }
 }
@@ -32,11 +31,11 @@ if (isset($_POST['tambah'])) {
     <div class="row">
         <div class="col-sm-12">
             <div class="white-box">
-                <h3 class="box-title">Pendaftaran Ibu Hamil</h3>
+                <h3 class="box-title">Pendaftaran Lansia</h3>
                 <div class="row">
                     <?php require_once('alert.php'); ?>
                     <div class="col-sm-6">
-                        <h4 style="text-align: center;">Data Ibu Hamil</h4>
+                        <h4 style="text-align: center;">Data Lansia</h4>
                         <form method="post">
                             <div class="sm-3">
                                 <label for="nik" class="form-label">NIK</label>
@@ -45,10 +44,6 @@ if (isset($_POST['tambah'])) {
                             <div class="sm-3">
                                 <label for="nama" class="form-label">Nama</label>
                                 <input type="text" name="nama" class="form-control" id="nama">
-                            </div><br>
-                            <div class="sm-3">
-                                <label for="suami" class="form-label">Nama Suami</label>
-                                <input type="text" name="suami" class="form-control" id="suami">
                             </div><br>
                             <div class="sm-3">
                                 <label for="alamat" class="form-label">Alamat</label>
@@ -60,7 +55,7 @@ if (isset($_POST['tambah'])) {
                             </div><br>
                     </div>
                     <button name="tambah" class="btn btn-success btn-lg"><i class="fa fa-check-square"></i> Daftar</button>
-                    <a href="ibu-hamil.php" class="btn btn-danger btn-lg"><i class="fa fa-times"></i> Batal</a>
+                    <a href="lansia.php" class="btn btn-danger btn-lg"><i class="fa fa-times"></i> Batal</a>
                     </form>
                 </div>
             </div>
